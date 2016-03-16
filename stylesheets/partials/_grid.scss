@@ -1,0 +1,107 @@
+// =============================================================================
+// Grid
+// =============================================================================
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+
+.container {
+  @include make-container();
+  @include make-container-max-widths();
+
+}
+
+
+// Fluid container
+//
+// Utilizes the mixin meant for fixed width containers, but without any defined
+// width for fluid, full width layouts.
+
+.container-fluid {
+  @include make-container();
+}
+
+
+// Row
+//
+// Rows contain and clear the floats of your columns.
+
+@if $enable--grid-classes {
+  .row {
+    @include make-row();
+  }
+}
+
+
+// Columns
+//
+// Common styles for small and large grid columns
+
+@if $enable--grid-classes {
+  @include make-grid-columns();
+}
+
+
+// Flex variation
+//
+// Custom styles for additional flex alignment options.
+
+@if $enable--flex and $enable--grid-classes {
+
+  // Flex column reordering
+
+  @each $breakpoint in map-keys($grid__breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      .col-#{$breakpoint}-first { order: -1; }
+      .col-#{$breakpoint}-last  { order: 1; }
+    }
+  }
+
+  // Alignment for every column in row
+
+  @each $breakpoint in map-keys($grid__breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      .row-#{$breakpoint}-top    { align-items: flex-start; }
+      .row-#{$breakpoint}-center { align-items: center; }
+      .row-#{$breakpoint}-bottom { align-items: flex-end; }
+    }
+  }
+
+  // Alignment per column
+
+  @each $breakpoint in map-keys($grid__breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      .col-#{$breakpoint}-top    { align-self: flex-start; }
+      .col-#{$breakpoint}-center { align-self: center; }
+      .col-#{$breakpoint}-bottom { align-self: flex-end; }
+    }
+  }
+}
+
+// =============================================================================
+// Auto flex column
+// =============================================================================
+
+.col {
+  position: relative;
+  min-height: 1px;
+  padding-left:  ($grid__gutter--width / 2);
+  padding-right: ($grid__gutter--width / 2);
+  flex: 100%; // Todo include in mixin above
+  @include media-breakpoint-up(sm) {
+    flex: 1;
+  }
+}
+
+// =============================================================================
+// No padding fix
+// =============================================================================
+
+.row--nopadding {
+  margin: 0;
+  & > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+  }
+}

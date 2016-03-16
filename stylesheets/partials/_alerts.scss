@@ -1,0 +1,69 @@
+// =============================================================================
+// Alerts
+// =============================================================================
+
+//
+// Basic messaging system
+//
+
+.alert {
+    background-color: transparentize($color__brand--primary, .95);
+    border-radius: $border--radius;
+    &__label {
+        background: $color__brand--primary;
+        border-radius: $border--radius $border--radius 0 0;
+        color: white;
+        font-size: .45rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        padding: .25rem;
+        text-transform: uppercase;
+    }
+    &__content {
+        border: 1px solid $color__brand--primary;
+        border-radius: 0 0 $border--radius $border--radius;
+        padding: 1rem;
+        color: $color__brand--primary;
+        line-height: 1rem;
+    }
+    &--success {
+        background-color: transparentize($color__brand--success, .95);
+        & > .alert__label { // Todo figure out a better way
+            background: $color__brand--success;
+        }
+        & > .alert__content {
+            border-color: $color__brand--success;
+            color: $color__brand--success;
+        }
+    }
+    &--info {
+        background-color: transparentize($color__brand--info, .95);
+        & > .alert__label { // Todo figure out a better way
+            background: $color__brand--info;
+        }
+        & > .alert__content {
+            border-color: $color__brand--info;
+            color: $color__brand--info;
+        }
+    }
+    &--warning {
+        background-color: transparentize($color__brand--warning, .95);
+        & > .alert__label { // Todo figure out a better way
+            background: $color__brand--warning;
+        }
+        & > .alert__content {
+            border-color: $color__brand--warning;
+            color: $color__brand--warning;
+        }
+    }
+    &--danger {
+        background-color: transparentize($color__brand--danger, .95);
+        & > .alert__label { // Todo figure out a better way
+            background: $color__brand--danger;
+        }
+        & > .alert__content {
+            border-color: $color__brand--danger;
+            color: $color__brand--danger;
+        }
+    }
+}

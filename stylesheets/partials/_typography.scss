@@ -1,0 +1,171 @@
+// =============================================================================
+// Typography
+// =============================================================================
+
+// =============================================================================
+// Basic styling
+// =============================================================================
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  font-family: $font__family--headings, $font__fallback;
+}
+
+.blog {
+  font-family: $font__family--blog, $font__fallback;
+}
+
+// =============================================================================
+// General Sizing
+// =============================================================================
+
+h1, .h1 {
+  font-weight: $font__weight--black;
+  font-size: $font__size--h1;
+  letter-spacing: -.05em; // Adjust to your font
+  line-height: .75;
+  @include media-breakpoint-up(sm) {
+    font-size: $font__size--h1 + 1rem;
+  }
+}
+
+.h1--boom {
+  font-size: $font__size--h1;
+  @include media-breakpoint-up(lg) {
+    font-size: $font__size--boom;
+    line-height: 1;
+  }
+}
+
+h2, .h2 {
+  font-weight: $font__weight--bold;
+  font-size: $font__size--h2;
+  letter-spacing: -0.05em; // Adjust to your font
+  line-height: 1;
+  padding-top: .5rem;
+}
+
+h3, .h3 {
+  font-weight: $font__weight--light;
+  font-size: $font__size--h3;
+  letter-spacing: -0.025em; // Adjust to your font
+  line-height: 1;
+}
+
+h4, .h4 {
+  font-weight: $font__weight--light;
+  font-size: $font__size--h4;
+  line-height: 1.5rem;
+  letter-spacing: -0.025em; // Adjust to your font
+  padding-top: 0.5rem;
+}
+
+h5, .h5 {
+  font-weight: $font__weight--light;
+  font-size: $font__size--h5;
+  line-height: 1rem;
+}
+
+h6, .h6 {
+  font-weight: $font__weight--light;
+  font-size: $font__size--h6;
+  line-height: 1rem;
+}
+
+p, .p {
+  font-weight: $font__weight--regular;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  letter-spacing: 0;
+  line-height: 1rem;
+}
+
+.quote {
+  font-weight: $font__weight--light;
+  font-size: $font__size--h3;
+  display: block;
+  text-align: center;
+  font-style: italic;
+}
+
+blockquote, .blockquote { //research block quote styling
+  display: block;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1rem;
+  margin: $rhythm;
+}
+
+small, .small {
+  font-size: .5rem;
+  line-height: .5rem;
+  magin-bottom: .5rem;
+}
+
+// =============================================================================
+// Extra styling
+// =============================================================================
+
+::selection {
+  background-color: $color__brand--primary;
+}
+
+.link {
+  color: inherit;
+  text-shadow: 1px 0 0 white, 2px 0 0 white, -1px 0 0 white, -2px 0 0 white; // Turn off for usage on dark
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, $color__brand--primary 50%);
+  background-position: 0px 1.03em;
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  @include transition ($transition--primary-short);
+  &:hover, &:focus, &:active {
+    text-decoration: none;
+    color: $color__brand--primary;
+  }
+  &:visited {
+    color: inherit;
+  }
+}
+
+.highlight .link {
+  text-shadow: none;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, white 50%);
+}
+
+.underline { // Create a short centered underline under an element
+  &:after {
+    content: "";
+    position: relative;
+    display: block;
+    border: .05em solid;
+    width: 25%;
+    margin: $rhythm--y 0;
+  }
+  &--center:after {
+    margin: $rhythm--y auto;
+  }
+  &--full:after {
+    width: 100%;
+  }
+}
+
+.overline { // Create a short centered overline over an element
+  &:before {
+    content: "";
+    position: relative;
+    display: block;
+    border: .05em solid;
+    width: 25%;
+    margin: $rhythm--y 0;
+  }
+  &--center:before {
+    margin: $rhythm--y auto;
+  }
+  &--full:before {
+    width: 100%;
+  }
+}

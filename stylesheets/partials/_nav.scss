@@ -1,0 +1,91 @@
+// =============================================================================
+// Nav
+// =============================================================================
+
+// Base class
+//
+// Kickstart any navigation component with a set of style resets. Works with
+// `<nav>`s or `<ul>`s.
+
+.nav {
+  display: flex; // Todo fix conflict
+  flex: 1 0 100%;
+  justify-content: space-between;
+  list-style: none;
+}
+
+//
+// Navigation components
+//
+
+.nav {
+  display:block;
+  position:absolute;
+  width:100%;
+  margin: 0 -.5rem; // Todo find a better way
+  transition:transform 0.4s ease-in-out;
+  transform:translateY(-100vh);
+  padding-left: 0; // Todo find a better way
+  z-index: -1;
+
+  @include media-breakpoint-up(md) {
+
+    transform:translateY(0);
+    position:relative;
+    display:flex;
+    justify-content:flex-end;
+    z-index: inherit;
+    &--centered {
+      justify-content: center;
+    }
+  }
+}
+
+.nav.navigation-open {
+  transform:translateY(0);
+}
+
+.nav__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255,255,255,.95);
+
+  @include media-breakpoint-up(md) {
+
+    background-color: transparent;
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+}
+
+.nav--mobile {
+  display:flex;
+  align-items: center;
+
+  @include media-breakpoint-up(md) {
+    display:none;
+    visibility:hidden;
+  }
+}
+
+.nav--container {
+  display:flex;
+  flex:1 0 100%;
+
+  @include media-breakpoint-up(md) {
+
+    flex:1 1 90%;
+    flex-direction:row;
+    justify-content:flex-end;
+  }
+}
+
+.nav__logo {
+  display:flex;
+  //flex:2 0 20%;
+  //justify-content:flex-start;
+  //align-items:center;
+}

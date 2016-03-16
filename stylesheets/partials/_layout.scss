@@ -1,0 +1,112 @@
+// =============================================================================
+// Layout elements
+// =============================================================================
+
+//
+// Basic vertical layout elements
+//
+
+// =============================================================================
+// Full-screen layout
+// =============================================================================
+
+section {
+  background: linear-gradient(transparent, rgba(0,0,0,.025)); // Todo move somewhere else
+}
+
+/* // Todo delete
+.flexscreen {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  overflow: hidden;
+  &__content {
+    display: flex;
+    //flex: 1; Todo watch out for implications
+    flex-direction: column;
+    justify-content: center;
+    &--top {
+      margin-top: $rhythm--y;
+    }
+    &--bottom {
+      margin-bottom: $rhythm--y;
+    }
+  }
+}
+*/
+
+.fullscreen { // Todo delete
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  &--half {
+    min-height: 50vh;
+  }
+  &__content {
+    @include media-breakpoint-up(lg) {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+    }
+  }
+}
+
+// =============================================================================
+// Absolute positioning // Todo delete
+// =============================================================================
+
+.position {
+  position: absolute;
+  width: 100%;
+  &--venter {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &--bottom {
+    padding-bottom: 1rem;
+    bottom: 0%;
+  }
+  &--top {
+    padding-top: 1rem;
+    top: 0%; 
+  }
+}
+
+// =============================================================================
+// Flex vertical layout
+// =============================================================================
+
+.flex {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-direction: column;
+  &__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    &--top {
+      //margin-top: $rhythm--y;
+    }
+    &--bottom {
+      //margin-bottom: $rhythm--y;
+      margin-top: auto; // Todo watch out
+    }
+  }
+  &--center {
+    align-self: center;
+  }
+  &--start {
+    align-self: flex-start;
+  }
+  &--end {
+    align-self: flex-end;
+  }
+}
+
+
+

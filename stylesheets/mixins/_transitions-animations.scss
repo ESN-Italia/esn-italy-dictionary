@@ -1,0 +1,41 @@
+// =============================================================================
+// Transitions
+// =============================================================================
+
+@mixin transition($args...) { //todo delete with autoprefixer
+  transition: $args;
+}
+
+// =============================================================================
+// Animations
+// =============================================================================
+
+@mixin animation($args...) {
+  -webkit-animation: #{$args};
+  animation: #{$args};      
+}
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+// =============================================================================
+// Sequence Delays
+// =============================================================================
+
+@mixin animation__delay($elements-count){ //todo figure out scrollreveal compatibility
+	@for $i from 1 through $elements-count {
+	  .animation__delay > *:nth-child(#{$i}) { animation-delay: $i * $animation__delay !important; }
+	}
+}
+
+@mixin transition__delay($elements-count){
+  @for $i from 1 through $elements-count {
+    .transition__delay > *:nth-child(#{$i}) { transition-delay: $i * $transition__delay; }
+  }
+}

@@ -1,0 +1,269 @@
+// =============================================================================
+// General Definition
+// =============================================================================
+
+.button {
+  position: relative;
+  display: inline-block;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: $border--radius;
+  padding: .25rem .5rem;
+  cursor: pointer;
+  @include transition ($transition--secondary-short);
+  &:hover {
+    text-decoration: none;
+  }
+  & > .fa {
+    margin-right: .25rem;
+  }
+}
+
+// =============================================================================
+// Large Button
+// =============================================================================
+
+.button--large {
+  padding: $button__padding--y $button__padding--x;
+}
+
+.button--navbar {
+    padding: .25rem 2rem;
+    //margin: $rhythm/2 0;
+    font-size: .5rem;
+}
+
+// =============================================================================
+// Primary Button
+// =============================================================================
+
+.button--primary {
+  color: white;
+  background-color: $color__brand--primary;
+  @include hover-focus-active() {
+    @include box-shadow();
+    text-decoration:none;
+    color: white;
+    background-color: lighten($color__brand--primary, 5%);
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+  &.button--inverse {
+    background-color: white;
+    color: $color__brand--primary;
+  }
+  &.button--info {
+    background-color: $color__brand--info;
+    @include hover-focus-active() {
+      background-color: lighten($color__brand--info, 5%);
+    }
+  }
+  &.button--success {
+    background-color: $color__brand--success;
+    @include hover-focus-active() {
+      background-color: lighten($color__brand--success, 5%);
+    }
+  }
+  &.button--warning {
+    background-color: $color__brand--warning;
+    @include hover-focus-active() {
+      background-color: lighten($color__brand--warning, 5%);
+    }
+  }
+  &.button--danger {
+    background-color: $color__brand--danger;
+    @include hover-focus-active() {
+      background-color: lighten($color__brand--danger, 5%);
+    }
+  }
+}
+
+// =============================================================================
+// Secondary Button
+// =============================================================================
+
+.button--secondary {
+  color: $color__brand--primary;
+  &:after {
+    @include absolute-stretch;
+    content: "";
+    border: 2px solid $color__brand--primary;
+    border-radius: $border--radius;
+    @include transition (inherit);
+  }
+  &:hover:after {
+    border: 2px solid lighten($color__brand--primary, 5%);
+  }
+  @include hover-focus-active() {
+    @include box-shadow();
+    text-decoration:none;
+    color: white;
+    background-color: lighten($color__brand--primary, 5%);
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+  &.button--inverse {
+    color: white;
+    &:after {
+      border: 2px solid white;
+    }
+    @include hover-focus-active() {
+      background-color: white;
+      color: $color__brand--primary;
+    }   
+  }
+  &.button--info {
+    color: $color__brand--info;
+    &:after {
+      border-color: $color__brand--info;
+    }
+    &:hover:after {
+      border-color: lighten($color__brand--info, 5%);
+    }
+    @include hover-focus-active() {
+      color: white;
+      background-color: lighten($color__brand--info, 5%);
+    }
+  }
+  &.button--success {
+    color: $color__brand--success;
+    &:after {
+      border-color: $color__brand--success;
+    }
+    &:hover:after {
+      border-color: lighten($color__brand--success, 5%);
+    }
+    @include hover-focus-active() {
+      color: white;
+      background-color: lighten($color__brand--success, 5%);
+    }
+  }
+  &.button--warning {
+    color: $color__brand--warning;
+    &:after {
+      border-color: $color__brand--warning;
+    }
+    &:hover:after {
+      border-color: lighten($color__brand--warning, 5%);
+    }
+    @include hover-focus-active() {
+      color: white;
+      background-color: lighten($color__brand--warning, 5%);
+    }
+  }
+  &.button--danger {
+    color: $color__brand--danger;
+    &:after {
+      border-color: $color__brand--danger;
+    }
+    &:hover:after {
+      border-color: lighten($color__brand--danger, 5%);
+    }
+    @include hover-focus-active() {
+      color: white;
+      background-color: lighten($color__brand--danger, 5%);
+    }
+  }
+}
+
+// =============================================================================
+// Tertiary Button
+// =============================================================================
+
+.button--tertiary {
+  color: $color__brand--primary;
+  &:after {
+    @include absolute-stretch;
+    content: "";
+    border-bottom: 2px solid transparent;
+    @include transition (inherit);
+  }
+  &:hover:after {
+    border-bottom: 2px solid lighten($color__brand--primary, 5%);
+  }
+  @include hover-focus-active() {
+    text-decoration: none;
+    color: $color__brand--primary;
+  }
+  &.button--inverse {
+    color: white;
+    &:hover:after {
+      border-bottom: 2px solid white;
+    }
+  }
+  &.button--info {
+    color: $color__brand--info;
+    &:hover:after {
+    border-color: lighten($color__brand--info, 5%);
+    }
+    @include hover-focus-active() {
+      color: $color__brand--info;
+    }
+  }
+  &.button--success {
+    color: $color__brand--success;
+    &:hover:after {
+    border-color: lighten($color__brand--success, 5%);
+    }
+    @include hover-focus-active() {
+      color: $color__brand--success;
+    }
+  }
+  &.button--warning {
+    color: $color__brand--warning;
+    &:hover:after {
+    border-color: lighten($color__brand--warning, 5%);
+    }
+    @include hover-focus-active() {
+      color: $color__brand--warning;
+    }
+  }
+  &.button--danger {
+    color: $color__brand--danger;
+    &:hover:after {
+    border-color: lighten($color__brand--danger, 5%);
+    }
+    @include hover-focus-active() {
+      color: $color__brand--danger;
+    }
+  }
+}
+
+// =============================================================================
+// Animated Button
+// =============================================================================
+
+.button--animated {
+  overflow: hidden;
+  & > span {
+    display: block;
+    margin-bottom: 0;
+    @include transition ($transition--secondary-short); 
+  }
+  .button__visible {
+    transform: translateY(0);
+  }
+  .button__revealed {
+    @include absolute-stretch;
+    transform: translateY(200%);
+    & i {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      left: 50%;
+    }
+  }
+  @include hover-focus-active {
+    .button__visible, {
+      transform: translateY(-200%);
+    }
+    .button__revealed {
+      transform: translateY(0);
+    }
+  }
+}

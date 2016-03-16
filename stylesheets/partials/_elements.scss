@@ -1,0 +1,284 @@
+// =============================================================================
+// Hero element
+// =============================================================================
+
+.hero {
+  @include inverse-colors;
+  overflow: hidden;
+  min-height: 100vh;
+  position: relative;
+  text-align: center;
+  background-color: $color__brand--primary;
+  & * {
+    text-shadow: none !important;
+  }
+}
+
+.hero__image {
+  @include stretch;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include transition ($transition--secondary-long);
+  @include animation ('fadeIn 2s ease-in');
+}
+
+.hero:hover .hero__image {
+  @include transform(scale(1.1));
+}
+
+.hero__content {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
+.mouse-scroll {
+  position: absolute;
+  bottom: 2vh;
+  transform: translateX(-50%);
+}
+
+@media screen and (max-width:992px) {
+  .mouse-scroll {
+    display: none;
+  }
+}
+
+.mouse-scroll .mouse {
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 50px;
+  margin: 0 auto 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 3px solid #FFF;
+  border-radius: 23px;
+}
+
+.mouse-scroll .mouse .mouse-movement {
+  position: absolute;
+  display: block;
+  top: 29%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  background: #FFF;
+  border-radius: 50%;
+  @include animation('scroll-ani 3s linear infinite');
+}
+
+.mouse-scroll .mouse-message {
+  float: left;
+  color: transparent;
+  margin-top: -15px;
+  padding: 0;
+  -webkit-animation: scroll-ani 3s linear infinite;
+  -moz-animation: scroll-ani 3s linear infinite;
+  animation: scroll-ani 3s linear infinite;
+}
+
+.mouse-scroll:hover .mouse-message {
+  color: white;
+}
+
+// =============================================================================
+// Images
+// =============================================================================
+
+.fullscreen__image {
+  @extend .hero__image;
+  overflow: hidden;
+  @include animation ('hero--fadeIn 2s ease-in');
+  &--left {
+    width: 50%;
+    background-position: right top;
+  }
+  &--right {
+    width: 50%;
+    right:0;
+    left: auto;
+    background-position: left top;
+  }
+}
+
+.fullscreen:hover .fullscreen__image {
+  @include transform(scale(1.1));
+}
+
+.image { //to be used with <picture> container primarily
+  display: block;
+  height: 0;
+  padding-bottom: 100%;
+  background-color: lighten($color__background--inverse, 90%);
+  width: 100%; // Todo review
+  margin-bottom: $rhythm--y;
+  &.image--card {
+      margin: -$rhythm--y -$rhythm--x $rhythm--y;
+  }
+
+  &.image--1to1 {
+    padding-bottom: 100%;
+  }
+
+  &.image--2to1 {
+    padding-bottom: 200%;
+  }
+
+  &.image--1to2 {
+    padding-bottom: 50%;
+  }
+}
+
+.image + .image {
+  margin-bottom: 0;
+}
+
+.image__darkener:after {
+  content: "";
+  @include absolute-stretch;
+  background-color: transparentize($color__background--inverse, .5);
+}
+
+.image--background {
+  @include absolute-stretch;
+  background-color: $color__background--inverse;
+  background-size: cover;
+  background-position: center;
+  @include animation ('hero--fadeIn 2s ease-in');
+}
+
+#logo {
+  width: $rhythm--x*2;
+  height: $rhythm--y*2;
+  overflow: visible;
+  opacity: .75;
+  @include transition($transition--primary-short);
+}
+
+#logo:hover {
+  opacity: 1;
+}
+
+
+
+// =============================================================================
+// Reveal slider element
+// =============================================================================
+
+.reveal { // Fix mobile folding
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal__before--slide {
+  @include stretch ();
+  @include transform(translateY(-100%));
+  @include media-breakpoint-up(lg) {
+    @include transform(translateY(0%));
+    @include transition($transition--primary-short);
+  }
+}
+
+.reveal__after--slide {
+  background-color: transparentize(#000, .5);
+  @include stretch ();
+  @include media-breakpoint-up(lg) {
+    @include transform(translateY(100%));
+    @include transition($transition--primary-short);
+    & h1, h2, h3, h4, h5, h6, p { // Todo figure out better way
+      padding-left:1rem;
+      padding-right:1rem;
+    }
+  }
+}
+
+.reveal:hover .reveal__after--slide {
+  @include transform(translateY(0%));
+}
+
+.reveal:hover .reveal__before--slide {
+  @include transform(translateY(-100%));
+}
+
+.reveal .venter--full {
+  padding: $rhythm--x;
+}
+
+// =============================================================================
+// Reveal fader element
+// =============================================================================
+
+.reveal__before--fade {
+  position: absolute;
+  width: 100%;
+  top: auto;
+  bottom: 0px;
+  padding: 0 $rhythm--x;
+  @include media-breakpoint-up(lg) {
+    @include transform(translateY(4rem));
+    @include transition($transition--primary-short);
+  }
+}
+
+.reveal__darkener {
+  @include stretch();
+  @include transition($transition--primary-short);
+  background-color: transparentize($color__brand--primary, .5);
+}
+
+.reveal:hover .reveal__before--fade > p {
+  opacity: 1;
+}
+
+@include media-breakpoint-up(lg) {
+  .reveal__before--fade > p {
+    opacity: 0;
+    @include transition($transition--primary-short);
+  }
+  .reveal__darkener {
+    background-color: transparent;
+  }
+  .reveal:hover .reveal__darkener {
+    background-color: transparentize($color__brand--primary, .5);
+  }
+  .reveal:hover .reveal__before--fade {
+    @include transform(translateY(0rem));
+  }
+}
+
+// =============================================================================
+// Highlighted element
+// =============================================================================
+
+.highlight {
+  background-color: $color__brand--primary;
+  color: white;
+}
+
+// =============================================================================
+// Todo DELETE
+// =============================================================================
+
+.bghero {
+  background-image: url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?crop=entropy&dpr=2&fit=crop&fm=jpg&h=950&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1700'); /*delete, only for testing purposes */
+}
+
+.bg1 {
+  background-image: url(https://images.unsplash.com/photo-1446776858070-70c3d5ed6758?crop=entropy&dpr=2&fit=crop&fm=jpg&h=950&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1700);
+}
+
+.bg2 {
+  background-image: url('https://images.unsplash.com/photo-1417577097439-425fb7dec05e?crop=entropy&dpr=2&fit=crop&fm=jpg&h=950&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1700');
+}
+
+.bg3 {
+  background-image: url('https://images.unsplash.com/photo-1444573997188-93a7ea73940f?crop=entropy&dpr=2&fit=crop&fm=jpg&h=950&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1700');
+}
+
+
+

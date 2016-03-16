@@ -1,0 +1,327 @@
+// =============================================================================
+// Navbar
+// =============================================================================
+
+// Wrapper and base class
+//
+// Provide a static navbar from which we expand to create full-width, fixed, and
+// other navbar variations.
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include transform(translateY(0));
+  @include transition($transition--secondary-short);
+  & .container {
+    display:flex;
+    position:relative;
+    //flex:1 0 100%;
+    flex-wrap: wrap; // must be there to allow the navigation to go next line
+  }
+  &--vertical {
+    color: $color__brand--primary;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: white;
+    & .nav__item {
+      margin: 0 !important;
+    }
+    &.navbar--hidden {
+      @include transform(translateX(-100%));
+    }
+  }
+  &--hidden {
+  @include transform(translateY(-1000%)); // Todo find a better way
+    @include media-breakpoint-up(md) {
+      @include transform(translateY(-100%));
+    }
+  }
+}
+
+// Navbar header element
+//
+//
+
+.header {
+  display: flex;
+  position: relative;
+  flex:1 0 100%;
+  flex-wrap: wrap; // must be there to allow the navigation to go next line
+
+  @include media-breakpoint-up(md) {
+    flex: none;
+  }
+}
+
+
+// Navbar alignment options
+//
+// Display the navbar across the entirety of the page or fixed it to the top or
+// bottom of the page.
+
+// A static, full width modifier.
+.navbar--full {
+  z-index: $zindex--navbar;
+}
+
+// Fix the top/bottom navbars when screen real estate supports it
+.navbar--fixed-top,
+.navbar--fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: $zindex--navbar-fixed;
+}
+
+.navbar--fixed-top {
+  top: 0;
+}
+
+.navbar--fixed-bottom {
+  bottom: 0;
+}
+
+.navbar--sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: $zindex--navbar-sticky;
+  width: 100%;
+}
+
+// Brand/project name
+// 
+// Set the container to be occupied by the brand logo.
+
+.navbar__brand {
+  position:relative;
+  display:flex;
+  flex:2 0 20%;
+  //justify-content:flex-start;
+  align-items:center;
+  border-bottom:1px solid #eee;
+  text-decoration:none;
+
+  @include media-breakpoint-up(md) {
+    flex:1 0 5em;
+    justify-content:center;
+    border-bottom:none;
+  }
+}
+
+// Navigation and links
+//
+// Set styling of the text shown in the navbar
+
+.nav__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  //flex: 1;
+  &--notification {
+    line-height: 1;
+    position: absolute;
+    top: .25rem;
+    right: -.65rem;
+    font-size: .5rem;
+    height: .75rem;
+    font-weight: $font__weight--bold;
+    color: white;
+    background-color: $color__brand--primary;
+    border-radius: .5rem;
+    padding: .1rem .25rem;
+    text-align: center;
+    @include animation('bounce--gentle 1s 5s infinite');
+  }
+  &--padded {
+    padding: $rhythm--y $rhythm--x;
+  }
+  &--small {
+    font-size: .5rem;
+    padding: .5rem;
+  }
+  &--zoom:hover {
+    transform: scale(2);
+  }
+  &--hover:hover {
+    background-color: $color__brand--primary;
+    color: white;
+    z-index: 1000;
+  }
+}
+
+.nav__item--underline {
+  &:after {
+      @include absolute-stretch;
+      content: "";
+      border-bottom: 2px solid transparent;
+      pointer-events: none;
+      @include transition ($transition--primary-short);     
+    }
+    &:hover:after {
+      border-bottom: 2px solid lighten($color__brand--primary, 5%);
+  }
+}
+
+.nav__link {
+  //display: block;
+  font-size: .5rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: $font__weight--bold;
+  padding: $rhythm--y/2 0;
+  @include transition($transition--primary-short);
+
+  + .nav__link {
+    margin-left: 1rem;
+  }
+  &--mobiletoggle {
+    font-size: 1rem;
+  }
+  @include media-breakpoint-up(lg) {
+    //padding: $rhythm--y 0;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .nav__item + .nav__item {
+    margin-left: $rhythm--x;
+  }
+}
+
+// Navbar toggle
+//
+// Mobile menu styles, powered by the CSS-only checkbox hack 
+/*
+.navbar__toggle {
+  padding: .75rem 0;
+  float: right;
+  font-size: 1rem;
+}
+
+.navbar label {
+  display: block;
+}
+
+.navbar input[type=checkbox] {
+  display: none;
+}
+
+.collapse {
+  display: block;
+}
+
+.navbar input[type=checkbox]:checked ~ .collapse{
+  display: none;
+}
+
+@include media-breakpoint-up(lg) {
+  .navi__item {
+    display: inline;
+    width: auto;
+  }
+
+  .collapse {
+    display: block !important;
+  }
+
+  .navbar input[type=checkbox], .navbar label{
+    display: none;
+  }
+}
+*/
+// Navbar colour schemes
+//
+// Set two styles of navbars, dark and light, with corresponding colours
+
+.navbar--light {
+  background-color: $navbar--light-bg;
+  @include box-shadow();
+}
+
+.navbar--light {
+  .navbar--brand {
+    color: $navbar--light-hover-color;
+
+    @include hover-focus {
+      color: $navbar--light-hover-color;
+    }
+  }
+
+    .nav__link {
+      color: $navbar--light-color;
+
+      @include hover-focus {
+        color: $navbar--light-hover-color;
+      }
+
+    .open > .nav__link,
+    .active > .nav__link,
+    .nav__link.open,
+    .nav__link.active {
+      @include plain-hover-focus {
+        color: $navbar--light-hover-color;
+      }
+    }
+  }
+
+  .navbar__divider {
+    background-color: rgba(0,0,0,.075);
+  }
+}
+
+.navbar--dark {
+  background-color: $navbar--dark-bg;
+  @include box-shadow();
+  .navbar--brand {
+    color: $navbar--dark-hover-color;
+
+    @include hover-focus {
+      color: $navbar--dark-hover-color;
+    }
+  }
+
+    .nav__link {
+      color: $navbar--dark-color;
+
+      @include hover-focus {
+        color: $navbar--dark-hover-color;
+      }
+
+    .open > .nav__link,
+    .active > .nav__link,
+    .nav__link.open,
+    .nav__link.active {
+      @include plain-hover-focus {
+        color: $navbar--dark-hover-color;
+      }
+    }
+  }
+
+  .navbar__divider {
+    background-color: rgba(255,255,255,.075);
+  }
+}
+
+// Utilities
+//
+// Extra classes for additional effects used in navbars
+
+.navbar__divider {
+  float: left;
+  width: 1px;
+  padding-top: $navbar__padding--y;
+  padding-bottom: $navbar__padding--y;
+  margin-right: $navbar__padding--x; // Todo align margin and padding
+  margin-left:  $navbar__padding--x;
+  overflow: hidden;
+
+  &:before {
+    content: "\00a0";
+  }
+}

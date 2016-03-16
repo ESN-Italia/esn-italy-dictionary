@@ -1,0 +1,15 @@
+// =============================================================================
+// Box Shadow
+// =============================================================================
+
+@mixin box-shadow($top: 0, $left: 0, $blur: $box-shadow__blur, $box-shadow-color: rgba(0,0,0,.2), $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $box-shadow-color;
+       -moz-box-shadow:inset $top $left $blur $box-shadow-color;
+            box-shadow:inset $top $left $blur $box-shadow-color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $box-shadow-color;
+       -moz-box-shadow: $top $left $blur $box-shadow-color;
+            box-shadow: $top $left $blur $box-shadow-color;
+  }
+}

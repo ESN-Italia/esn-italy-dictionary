@@ -1,0 +1,35 @@
+// =============================================================================
+// Card element
+// =============================================================================
+
+.card {
+  position: relative;
+  background-color: white;
+  //overflow: auto; // Todo can mess up transitions
+  overflow: hidden; // Todo possible solution, test
+  border: none;
+  margin-bottom: 0;
+  //@include clearfix--before(); // Todo possible solution, test
+  @include box-shadow();
+  @include transition ($transition--primary-short);
+  &:hover {
+    @include box-shadow(0,0,$box-shadow__blur*1.25);
+    transform: translateY(-.125rem);
+  }
+}
+
+// Fix issues coming from using rhythm on a card
+
+.card__image {
+  margin-top: 0 !important;
+  & > * {
+    margin-top: 0 !important;
+  }
+}
+
+.card__content {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: $rhythm--x;
+  padding-right: $rhythm--x;
+}

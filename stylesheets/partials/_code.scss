@@ -1,0 +1,48 @@
+// =============================================================================
+// Code example block
+// =============================================================================
+
+.code__example {
+  border: 1px solid $color__gray--lighter;
+  border-radius: $border--radius;
+  & > *:not(pre) {
+    padding: 0 $rhythm--x;
+  }
+  & pre {
+    margin: 0 -1px -1px -1px; // todo figure out a better way
+  }
+}
+
+// =============================================================================
+// Code styles
+// =============================================================================
+
+code, .code {
+  font-family: $font__family--monospace;
+  position: relative;
+  color: inherit;
+  font-size: 0.6rem;
+  line-height: $rhythm--y;
+  padding: 4px 4px 1px;
+  background: #f5f7f8;
+  border-radius: $border--radius;
+  margin-bottom: 0 !important;
+  &:after {
+    content: "";
+    @include absolute-stretch;
+    border: 1px solid $color__gray--lighter;
+  }
+}
+
+pre {
+  overflow-y: hidden;
+  overflow-x: auto;
+  line-height: $rhythm--y;
+}
+
+pre {
+  & code, .code {
+    padding: $rhythm--y $rhythm--x;
+    display: block;
+  }
+}

@@ -1,0 +1,8 @@
+// =============================================================================
+// Colour scheme settings
+// =============================================================================
+
+@mixin inverse-colors () {
+	background-color: $color__background--inverse;
+	color: $color__text--inverse;
+}

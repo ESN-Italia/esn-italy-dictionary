@@ -1,0 +1,17 @@
+// =============================================================================
+// Wireframe
+// =============================================================================
+
+// Override all styles to use Origin as a wireframing tool
+
+.wireframe * {
+    color: $font__color--body !important;
+    box-shadow: none !important;
+    background-image: none !important;
+    &:not(.image) {
+    	background-color: transparent !important;
+        &.card, .button {
+        border: 1px solid $color__gray--light !important;
+        }
+    }
+}

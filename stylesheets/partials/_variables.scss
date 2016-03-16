@@ -1,0 +1,214 @@
+// =============================================================================
+// Variables
+// =============================================================================
+
+// Table of Contents
+//
+// Color base
+// Options
+// Rhythm
+// Typography
+// Grid
+// Transitions
+// Box Shadows and Radii
+
+// General variable structure
+//
+// Variable format should follow the `$block__element--modifier-state-property` order.
+
+// =============================================================================
+// Color base
+// =============================================================================
+
+$color__brand--primary:             #2e3192   !default;
+$color__brand--secondary:           #fafafa   !default;
+
+$color__gray--dark:                 #373a3c 	!default;
+$color__gray:                       #55595c 	!default;
+$color__gray--light:                #818a91 	!default;
+$color__gray--lighter:              #eceeef 	!default;
+$color__gray--lightest:             #f7f7f9 	!default;
+
+$color__brand--success:             #5cb85c 	!default;
+$color__brand--info:                #5bc0de 	!default;
+$color__brand--warning:             #f0ad4e 	!default;
+$color__brand--danger:              #d9534f 	!default;
+
+$color__background:			            #fff    	!default;
+$color__background--inverse:        #000    	!default;
+$color__text--inverse:              rgba(255,255,255,.85) !default;
+
+
+// =============================================================================
+// Options
+// =============================================================================
+
+$enable--flex:                     true 		  !default;
+$enable--rounded:                  true  		  !default;
+$enable--shadows:                  false 		  !default;
+$enable--gradients:                false 		  !default;
+$enable--transitions:              false 		  !default;
+$enable--hover-media-query:        false 		  !default;
+$enable--grid-classes:             true       !default;
+
+// =============================================================================
+// Rhythm
+// =============================================================================
+
+$rhythm:					                 1rem       !default;
+$rhythm--x:                        $rhythm    !default;
+$rhythm--y:                        $rhythm    !default;
+$rhythms: (
+  0: (
+    x:                             0,
+    y:                             0
+  ),
+  1: (
+    x:                             $rhythm--x,
+    y:                             $rhythm--y
+  ),
+  2: (
+    x:                             ($rhythm--x * 1.5),
+    y:                             ($rhythm--y * 1.5)
+  ),
+  3: (
+    x:                             ($rhythm--x * 3),
+    y:                             ($rhythm--y * 3)
+  )
+)                                             !default;
+$border__width:                    1px        !default;
+
+// =============================================================================
+// Typography
+// =============================================================================
+
+$font__family--headings: ""; // Update with a font of your choice
+$font__family--body: ""; // Update with a font of your choice
+$font__family--blog: ""; // Update with a font of your choice
+$font__family--monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+$font__fallback: Helvetica Neue, Helvetica, Arial, sans-serif;
+
+@include font-face($font__family--headings, "../fonts/#{$font__family--headings}");
+@include font-face($font__family--body, "../fonts/#{$font__family--body}");
+@include font-face($font__family--blog, "../fonts/#{$font__family--blog}");
+
+$font__size--root:                 25px        !default;
+$font__size--root-sm:              3.5vmin     !default; 
+$font__size--root-xs:              5vmin       !default;
+
+$font__size--base:                  .88rem     !default;
+$font__size--lg:                   1.25rem     !default;
+$font__size--sm:                    .875rem    !default;
+$font__size--xs:                    .75rem     !default;
+
+$font__size--boom:			           8rem        !default;
+$font__size--h1:                   3rem        !default;
+$font__size--h2:                   2.5rem      !default;
+$font__size--h3:                   2rem        !default;
+$font__size--h4:                   1.25rem     !default;
+$font__size--h5:                   1rem        !default;
+$font__size--h6:                    .75rem     !default;
+
+$font__line-height: 		           1           !default;
+
+$font__weight--light: 		         300         !default;
+$font__weight--regular: 	         400         !default;
+$font__weight--bold: 		           700         !default;
+$font__weight--black: 		         900         !default;
+
+$font__color--body: 		           $color__gray--dark !default;
+
+$link__color:				               $color__brand--primary !default;
+$link__color--hover:		           darken($link__color, .15) !default;
+$link__hover--decoration:	         none        !default;
+
+$abbr__border--color:		           $color__gray--light !default;
+
+// =============================================================================
+// Buttons
+// =============================================================================
+
+$button__padding--x:              2rem         !default;
+$button__padding--y:               .5rem       !default;
+
+// =============================================================================
+// Grid
+// =============================================================================
+
+$grid__breakpoints: (
+  // Extra small screen / phone
+  xs:                              0,
+  // Small screen / phone
+  sm:                              544px,
+  // Medium screen / tablet
+  md:                              768px,
+  // Large screen / desktop
+  lg:                              992px,
+  // Extra large screen / wide desktop
+  xl:                              1200px
+)                                              !default;
+
+$grid__container-widths: (
+  sm:                              576px,
+  md:                              720px,
+  lg:                              940px,
+  xl:                              1140px
+)                                              !default;
+
+$grid__columns:                    12          !default;
+$grid__gutter--width:              1rem        !default;
+
+
+// =============================================================================
+// Navbar
+// =============================================================================
+
+$navbar__padding--y:		           $rhythm--y/2 !default;
+$navbar__padding--x:	             $rhythm--x/2 !default;
+
+$navbar--dark-bg:                  rgba(0,0,0,.95) !default;
+$navbar--dark-color:               $color__gray--dark !default;
+$navbar--dark-hover-color:         $color__gray--light !default;
+
+$navbar--light-bg:                 rgba(255,255,255,.95) !default;
+$navbar--light-color:              $color__gray !default;
+$navbar--light-hover-color:        $color__gray--dark !default;
+
+
+// =============================================================================
+// Z-index
+// =============================================================================
+
+// Warning: Avoid customizing these values. They're used for a bird's eye view
+// of components dependent on the z-axis and are designed to all work together.
+
+$zindex--navbar:                   1000         !default;
+$zindex--dropdown:                 1000         !default;
+$zindex--popover:                  1060         !default;
+$zindex--tooltip:                  1070         !default;
+$zindex--navbar-fixed:             1030         !default;
+$zindex--navbar-sticky:            1030         !default;
+$zindex--modal-bg:                 1040         !default;
+$zindex--modal:                    1050         !default;
+
+
+// =============================================================================
+// Transitions and animations
+// =============================================================================
+
+$easing--primary:                  cubic-bezier( .6, .2, .1, 1 ) !default;
+$easing--secondary:                cubic-bezier( .25, .1, .25, 1 ) !default;
+
+$transition--primary-short:        all 0.25s $easing--primary !default;
+$transition--primary-long:         all 10s $easing--primary !default;
+$transition--secondary-short:      all 0.25s $easing--secondary !default;
+$transition--secondary-long:       all 10s $easing--secondary !default;
+$animation__delay:                  .25s        !default;
+$transition__delay:                 .25s        !default;
+
+// =============================================================================
+// Box Shadows and Radii
+// =============================================================================
+
+$box-shadow__blur:                 50px; //try out box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+$border--radius:                    .1rem;

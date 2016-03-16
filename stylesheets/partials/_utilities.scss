@@ -1,0 +1,147 @@
+// =============================================================================
+// Utility classes
+// =============================================================================
+
+//
+// Floats
+//
+
+.clearfix {
+  @include clearfix();
+}
+
+.center-block {
+  @include center-block();
+}
+
+@each $breakpoint in map-keys($grid__breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    .pull-#{$breakpoint}-left {
+      @include pull-left();
+    }
+    .pull-#{$breakpoint}-right {
+      @include pull-right();
+    }
+    .pull-#{$breakpoint}-none {
+      float: none !important;
+    }
+  }
+}
+
+
+//
+// Screenreaders
+//
+
+.sr-only {
+  @include sr-only();
+}
+
+.sr-only-focusable {
+  @include sr-only-focusable();
+}
+
+.invisible {
+  visibility: hidden !important;
+}
+
+.text-hide {
+  @include text-hide();
+}
+
+
+//
+// Text
+//
+
+// Alignment
+
+.text--justify        { text-align: justify !important; }
+.text--nowrap         { white-space: nowrap !important; }
+.text--truncate       { @include text-truncate; }
+
+// Responsive alignment
+
+@each $breakpoint in map-keys($grid__breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    .text__#{$breakpoint}--left   { text-align: left !important; }
+    .text__#{$breakpoint}--right  { text-align: right !important; }
+    .text__#{$breakpoint}--center { text-align: center !important; }
+  }
+}
+
+// Transformation
+
+.text--lowercase      { text-transform: lowercase !important; }
+.text--uppercase      { text-transform: uppercase !important; }
+.text--capitalize     { text-transform: capitalize !important; }
+
+// Weight and italics
+
+.font__weight--normal  { font-weight: normal; }
+.font__weight--bold    { font-weight: bold; }
+.font--italic         { font-style: italic; }
+
+// Rhythm
+
+.rhythm {
+  margin-bottom: $rhythm--y;
+  margin-top: $rhythm--y; // Force calculated rhythm on element and all descendants
+  & > * {
+    margin-bottom: $rhythm--y; // Force calculated rhythm on element and all descendants
+  }
+  & h1, h2, h3, h4, h5, h6 {
+    margin-top: $rhythm--y;
+  }
+  & .fa {
+    margin-bottom: 0;
+  }
+}
+
+.rhythm--this { // Todo figure out
+  margin-bottom: $rhythm--y;
+}
+
+.rhythm--none, .rhythm--none * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.indent p {
+  margin-top: $rhythm--y;
+  margin-bottom: 0 !important;
+  + p {
+    margin-top: 0 !important;
+    text-indent: 2em; // Force print-style indented text
+  }
+}
+
+.inverse {
+  @include inverse-colors; // Force inverted color on text
+}
+
+// Overflow fading text
+
+.overflow__wrapper {
+  position: relative;
+}
+
+.overflow__scroller {
+  max-height: 8rem; // Adjust to your preference
+  overflow-y: hidden;
+  overflow-x: hidden;
+  margin-bottom: 0;
+  &:hover {
+    overflow-y: auto;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom:0;
+    left:0;
+    width: 100%;
+    height: 1rem;
+    background: linear-gradient(transparent 0%, white 75%);
+    pointer-events: none; 
+  }
+}

@@ -1,0 +1,45 @@
+// =============================================================================
+// Dictionary
+// =============================================================================
+
+.dictionary {
+  &__entry {
+
+  }
+  &__phrase {
+    font-weight: bold;
+    font-size: 1rem;
+    color: $color__brand--primary
+  }
+  &__explanation {
+    font-family: Georgia;
+    margin-top: 1rem;
+    padding: 0 .25rem;
+    & > li:before {
+      display: inline-block;
+      width: 1em;
+      padding-right: 0.5em;
+      font-weight: bold;
+      text-align: right;
+      content: counter(item) "";
+    }
+    & > li {
+      list-style-type: none;
+      counter-increment: item;
+    }
+  }
+  &__usage {
+    font-style: italic;
+  }
+  &__type {
+      font-family: Georgia;
+      font-style: italic;
+  }
+  &__number {
+      font-weight: bold;
+  }
+  & .card {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
