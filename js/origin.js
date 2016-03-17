@@ -73,5 +73,5 @@ $(function() {
 // ScrollReveal settings
 // =============================================================================
 
-window.sr = ScrollReveal({ reset: true, duration: 1000, mobile: false });
-    sr.reveal( '.animate' );
+//window.sr = ScrollReveal({ reset: true, duration: 1000, mobile: false });
+    //sr.reveal( '.animate' );
