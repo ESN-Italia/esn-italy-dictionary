@@ -121,11 +121,6 @@
   <script src="js/origin.js"></script>
 
   <script>
-
-  dictionaryEntries = document.getElementById('dictionary__entries');
-
-  sr = ScrollReveal();
-  sr.reveal('.animate', { container: dictionaryEntries });
  
   // ID of the Google Spreadsheet
   //https://docs.google.com/spreadsheets/d/10z3kwGXRzjqd2Y3V35cyFyMAIQ-R-SEk0FNOIfI0zis/pubhtml
@@ -155,7 +150,9 @@
     });
 
     $('#dictionary__entries').html(entries);
-    sr.sync();
+
+      window.sr = ScrollReveal({ reset: true, duration: 1000, mobile: false });
+      sr.reveal( '.animate' );
 
   });
 
