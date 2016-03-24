@@ -310,7 +310,7 @@ a {
   color: #2e3192;
   text-decoration: none; }
   a:focus, a:hover {
-    color: #2e3191;
+    color: white;
     text-decoration: none; }
   a:focus {
     outline: thin dotted;
@@ -1519,7 +1519,7 @@ section {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  border-radius: 0.1rem;
+  border-radius: 0.25rem;
   padding: .25rem .5rem;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1); }
@@ -1577,7 +1577,7 @@ section {
     bottom: 0;
     content: "";
     border: 2px solid #2e3192;
-    border-radius: 0.1rem;
+    border-radius: 0.25rem;
     transition: inherit; }
   .button--secondary:hover:after {
     border: 2px solid #3438a5; }
@@ -1875,6 +1875,8 @@ section {
     background-color: #2e3192;
     color: white;
     z-index: 1000; }
+    .nav__item--hover:hover > a {
+      color: white; }
 
 .nav__item--underline:after {
   position: absolute;
@@ -2085,7 +2087,7 @@ section {
 
 .code__example {
   border: 1px solid #eceeef;
-  border-radius: 0.1rem; }
+  border-radius: 0.25rem; }
   .code__example > *:not(pre) {
     padding: 0 1rem; }
   .code__example pre {
@@ -2099,7 +2101,7 @@ code, .code {
   line-height: 1rem;
   padding: 4px 4px 1px;
   background: #f5f7f8;
-  border-radius: 0.1rem;
+  border-radius: 0.25rem;
   margin-bottom: 0 !important; }
   code:after, .code:after {
     content: "";
@@ -2368,10 +2370,10 @@ pre code, pre .code {
 
 .alert {
   background-color: rgba(46, 49, 146, 0.05);
-  border-radius: 0.1rem; }
+  border-radius: 0.25rem; }
   .alert__label {
     background: #2e3192;
-    border-radius: 0.1rem 0.1rem 0 0;
+    border-radius: 0.25rem 0.25rem 0 0;
     color: white;
     font-size: .45rem;
     font-weight: bold;
@@ -2380,7 +2382,7 @@ pre code, pre .code {
     text-transform: uppercase; }
   .alert__content {
     border: 1px solid #2e3192;
-    border-radius: 0 0 0.1rem 0.1rem;
+    border-radius: 0 0 0.25rem 0.25rem;
     padding: 1rem;
     color: #2e3192;
     line-height: 1rem; }
@@ -2606,6 +2608,8 @@ input[type="text"] {
   .dictionary__explanation > li {
     list-style-type: none;
     counter-increment: item; }
+.dictionary__description {
+  color: #2e3192; }
 .dictionary__usage {
   font-style: italic; }
 .dictionary__type {
@@ -2615,7 +2619,8 @@ input[type="text"] {
   font-weight: bold; }
 .dictionary .card {
   padding-top: 1rem;
-  padding-bottom: 1rem; }
+  padding-bottom: 1rem;
+  border-radius: 0.25rem; }
 
 .clearfix:after {
   content: "";
