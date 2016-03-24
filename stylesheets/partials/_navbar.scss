@@ -151,6 +151,9 @@
     background-color: $color__brand--primary;
     color: white;
     z-index: 1000;
+    & > a {
+      color: white;
+    }
   }
 }
 
