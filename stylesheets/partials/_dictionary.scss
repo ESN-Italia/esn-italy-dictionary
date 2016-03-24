@@ -28,6 +28,9 @@
       counter-increment: item;
     }
   }
+  &__description {
+    color: $color__brand--primary;
+  }
   &__usage {
     font-style: italic;
   }
@@ -41,5 +44,6 @@
   & .card {
     padding-top: 1rem;
     padding-bottom: 1rem;
+    border-radius: $border--radius;
   }
 }
