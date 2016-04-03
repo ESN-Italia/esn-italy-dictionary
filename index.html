@@ -44,12 +44,17 @@
 <body>
 
   <section class="hero"><anchor name="home"></anchor>
+    <div class="hero__image bghero">
+      <div class="image__darkener"></div>
+    </div>
     <div class="hero__content">
       <div class="container-fluid">
-        <div class="row rhythm">
+        <div class="row">
           <div class="col-xs-12">
             <h1 class="h1">ESNdictionary</h1>
-            <h2 class="h5">All the ESN slang in one place.</h2>
+            <h2 class="h5">Get to know all the ESN slang in one place.</h2>
+            <p class="h6 rhythm">Navigate by pressing a key on the keyboard or by using the menu on the left.</p>
+            <a href="#a" class="button button--large button--secondary button--inverse">Get started</a>
           </div>
         </div>
       </div>
@@ -119,57 +124,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="js/scrollreveal.js"></script>
   <script src="js/origin.js"></script>
+  <script src="js/interaction.js"></script>
 
-  <script>
- 
-  // ID of the Google Spreadsheet
-  //https://docs.google.com/spreadsheets/d/10z3kwGXRzjqd2Y3V35cyFyMAIQ-R-SEk0FNOIfI0zis/pubhtml
-  var spreadsheetID = "10z3kwGXRzjqd2Y3V35cyFyMAIQ-R-SEk0FNOIfI0zis";
 
-  // Make sure it is public or set to Anyone with link can view 
-  var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
-
-  var cardTemplate = $('#dictionary__entry').html();
-
-  $.getJSON(url, function(result) {
-
-    var entries = result.feed.entry.map( function (entry) {
-          
-      var card = $($('<div>').html(cardTemplate).children()[0]);
-
-      card.find('.dictionary__phrase').text(entry.gsx$phrase.$t);
-      card.find('.dictionary__type').text(entry.gsx$type.$t);
-      card.find('.dictionary__grammar').text(entry.gsx$grammar.$t);
-      card.find('.dictionary__description').text(entry.gsx$numbereddescription.$t);
-      card.find('.dictionary__usage').text(entry.gsx$usageexample.$t);
-
-      entry.gsx$anchor.$t != "" ? card.find('.dictionary__anchor').attr("name", entry.gsx$anchor.$t.toLowerCase()) : null;
-
-      return card;
-
-    });
-
-    $('#dictionary__entries').html(entries);
-
-      window.sr = ScrollReveal({ reset: true, duration: 1000, mobile: false });
-      sr.reveal( '.animate' );
-
-  });
- 
-  </script>
-
-  <script>
-
-  $(document).keypress(function(e) {
-      var s = String.fromCharCode(e.which);
-      if (s.match(/[a-zA-Z\.]/))
-          console.log(s + ' is a match!');
-      $('html, body').animate({
-        scrollTop: $('[name="' + s + '"').offset().top
-      }, 500);
-  });
-
-  </script>
 
 </body>
 </html>
