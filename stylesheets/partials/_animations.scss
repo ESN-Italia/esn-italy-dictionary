@@ -34,3 +34,29 @@
     40% { transform: translateY(-2px); }
     60% { transform: translateY(-1px); }
 }
+
+//
+// Error animation
+//
+
+@include keyframes(error) {
+    8%, 41% {
+        transform: translateX(-10px);
+    }
+    25%, 58% {
+        transform: translateX(10px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    92% {
+        transform: translateX(5px);
+    }
+    0%, 100% {
+        transform: translateX(0);
+    }
+}
+
+.error {
+    @include animation ('error .5s #{$easing--primary}');
+}
