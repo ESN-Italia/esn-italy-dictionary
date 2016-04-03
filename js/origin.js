@@ -11,10 +11,33 @@
 // =============================================================================
 
 $('a').click(function() {
-	$('html, body').animate({
-	  scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top
-	}, 500);
+	if (($('[name="' + $.attr(this, 'href').substr(1) + '"]') || []).length != 0) {
+		$('html, body').animate({
+		  scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top
+		},500);
+	} else {
+		$('body').addClass("error");
+		setTimeout(function () {
+			$('body').removeClass("error");
+		},500);
+	}
 	return false;
+});
+
+$(document).keypress(function(e) {
+    var s = String.fromCharCode(e.which);
+    if (s.match(/[a-zA-Z\.]/)) {
+      if (($('[name="' + s + '"') || []).length != 0) {
+        $('html, body').animate({
+          scrollTop: $('[name="' + s + '"').offset().top
+        }, 500);
+      } else {
+        $('body').addClass("error");
+        setTimeout(function () {
+          $('body').removeClass("error");
+        },500);
+      }
+    }
 });
 
 // =============================================================================
