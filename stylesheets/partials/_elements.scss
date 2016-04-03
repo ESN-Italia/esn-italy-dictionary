@@ -141,7 +141,7 @@
 .image__darkener:after {
   content: "";
   @include absolute-stretch;
-  background-color: transparentize($color__background--inverse, .5);
+  background-color: transparentize($color__brand--primary, .1);
 }
 
 .image--background {
@@ -265,7 +265,7 @@
 // =============================================================================
 
 .bghero {
-  background-image: url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?crop=entropy&dpr=2&fit=crop&fm=jpg&h=950&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1700'); /*delete, only for testing purposes */
+  background-image: url('https://images.unsplash.com/photo-1445445290350-18a3b86e0b5a?crop=entropy&dpr=2&fit=crop&fm=jpg&h=925&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1675'); /*delete, only for testing purposes */
 }
 
 .bg1 {
