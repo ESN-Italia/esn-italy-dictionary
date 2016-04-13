@@ -30,8 +30,14 @@
   }
   &__description {
     color: $color__brand--primary;
+    font-family: sans-serif;
+    &:after {
+      content: ":";
+    }
   }
   &__usage {
+    display: inline-block;
+    padding-top: 0.25rem;
     font-style: italic;
   }
   &__type {

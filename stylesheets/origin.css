@@ -3,6 +3,9 @@
 * Copyright 2015 Jan Hruby
 * Licensed under MIT
 */
+@font-face {
+  font-family: "kelson_sans_bold-webfont";
+  src: url("../fonts/kelson_sans_bold-webfont.eot?") format("eot"), url("../fonts/kelson_sans_bold-webfont.woff2") format("woff2"), url("../fonts/kelson_sans_bold-webfont.woff") format("woff"), url("../fonts/kelson_sans_bold-webfont.ttf") format("truetype"), url("../fonts/kelson_sans_bold-webfont.svg#kelson_sans_bold-webfont") format("svg"); }
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
@@ -375,7 +378,7 @@ input[type="search"] {
   -webkit-appearance: none; }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-  font-family: "", Helvetica Neue, Helvetica, Arial, sans-serif; }
+  font-family: "kelson_sans_bold-webfont", Helvetica Neue, Helvetica, Arial, sans-serif; }
 
 .blog {
   font-family: "", Helvetica Neue, Helvetica, Arial, sans-serif; }
@@ -2634,8 +2637,13 @@ input[type="text"] {
     list-style-type: none;
     counter-increment: item; }
 .dictionary__description {
-  color: #2e3192; }
+  color: #2e3192;
+  font-family: sans-serif; }
+  .dictionary__description:after {
+    content: ":"; }
 .dictionary__usage {
+  display: inline-block;
+  padding-top: 0.25rem;
   font-style: italic; }
 .dictionary__type {
   font-family: Georgia;
