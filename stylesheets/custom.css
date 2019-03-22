@@ -1,0 +1,42 @@
+p {
+  line-height: inherit;
+}
+
+.hero__content {
+  padding: 30px 30px 30px 45px;  
+}
+
+.logo-country {
+  max-width: 250px;
+  width: 70%;
+  margin-bottom: 60px;
+}
+
+.hero__content h1 {
+  color: white;
+  padding-bottom: 20px;
+}
+
+.hero__content h5 {
+  padding-bottom: 30px;
+}
+
+#dictionary__entries {
+  padding-left: 20px;
+}
+
+.dictionary__explanation > li::before, .dictionary__description:after {
+  display: none;
+}
+
+.dictionary__type {
+  padding-bottom: 10px;
+}
+
+.dictionary__grammar {
+  font-size: 0.8em;
+}
+
+.dictionary__usage {
+  font-size: 0.8em;
+}
